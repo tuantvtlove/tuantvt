@@ -1,0 +1,56 @@
+*{ 
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+   }
+body {
+    -webkit-transition: background-color linear 5s;
+    -moz-transition: background-color linear 5s;
+    -o-transition: background-color linear 5s;
+    -ms-transition: background-color linear 5s;
+    transition: background-color linear 5s;
+    overflow-x: hidden;
+    height: 100vh;
+    text-align: center;
+    overflow: hidden;
+    margin-left: 0;
+    width: 100%;
+    position: relative;
+}
+
+.sad {
+    background-color: pink;
+}
+
+.main {
+    border-radius: 10px;
+    margin: 0 auto;
+    padding: 10px;
+    position: relative;
+    width: 600px;
+    background-color: rgba(255, 255, 255, 0.75);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+.text span{
+    letter-spacing: 7px;
+    white-space: nowrap;
+    overflow:hidden;
+    animation: typing 2s linear 1,
+    caret 0,5s steps(2) infinite;
+}
+@keyframes caret{
+    from{
+        border-color: transparent;
+    }to{
+        border-color: orange;
+    }
+}
+@keyframes typing{
+    from{
+        width: 0;
+    }to{
+        width: 100%;
+    }
+}

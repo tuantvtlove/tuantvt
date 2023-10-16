@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>tuantvt</title>
+    <link rel="stylesheet" href="css.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.2/TweenMax.min.js"></script>
+    
+    <style>
+        video {
+ position: absolute;
+ top: 0;
+ left: 0;
+ width: 100%;
+ height: 100vh;
+ object-fit: cover;
+}
+.timer {
+      font-size: 120%;
+      line-height: 1.0;
+      margin: 1em 0;
+    }
+
+    .timer b {
+      color: rgb(253, 99, 125);
+    }
+        .dot {
+            width: 35px;
+            height: 35px;
+            position: absolute;
+            background: url("https://cdn.pixabay.com/photo/2012/04/24/23/24/heart-41099_1280.png");
+            background-size: 100% 100%;
+        }
+    </style>
+</head>
+<script src="js.js"></script>
+<body id="boby">
+    <div class="loading"></div>
+        <video autoplay loop muite>
+            <source type="video/mp4" src="./nhac.mp4">
+            <source type="video/webm" src="./nhac.mp4">
+        </video>
+        
+    <div class="container" id="container" >
+        <div class="main">
+            <div id="wrap">
+                <div id="text">
+                    <span class="say"> <strong>Đôi lời của tác giả</strong> </span> <br>
+                    <span class="say"> </span> Tao không muốn tồn tại thứ gọi là cảm xúc<br>
+                    <span class="say"> </span> Tất chả đều chỉ là công cụ<br>
+                    <span class="say"> </span> <br>
+                    <span class="say"> 16/10/2023 ❤️ </span>
+                </div>
+                  <div id="clock-box">
+                    <span class="STYLE1"> <span class="STYLE1">ký tên:<i>💕tuantvt💕</i></span>
+                      <div class="timer">
+                        <b id="d"></b> Days <b id="h"></b> Hours <b id="m"></b> Minutes <b id="s"></b> Seconds
+                      </div>
+                  </div>
+
+              </div>
+        </div>
+    </div>
+    <script>
+        var falling = true;
+        TweenLite.set("#container", { perspective: 600 })
+        TweenLite.set("img", { xPercent: "-50%", yPercent: "-50%" })
+    
+        var total = 30;
+        var container = document.getElementById("container"), w = window.innerWidth, h = window.innerHeight;
+    
+        for (i = 0; i < total; i++) {
+            var Div = document.createElement('div');
+            TweenLite.set(Div, { attr: { class: 'dot' }, x: R(0, w), y: R(-200, -150), z: R(-200, 200) });
+            container.appendChild(Div);
+            animm(Div);
+        }
+    
+        function animm(elm) {
+            TweenMax.to(elm, R(6, 15), { y: h + 100, ease: Linear.easeNone, repeat: -1, delay: -15 });
+            TweenMax.to(elm, R(4, 8), { x: '+=100', rotationZ: R(0, 180), repeat: -1, yoyo: true, ease: Sine.easeInOut });
+            TweenMax.to(elm, R(2, 8), { rotationX: R(0, 360), rotationY: R(0, 360), repeat: -1, yoyo: true, ease: Sine.easeInOut, delay: -5 });
+        };
+    
+        function R(min, max) { return min + Math.random() * (max - min) };
+
+
+
+        function timer() {
+            window.setTimeout("show_date_time()", 1000);
+            var start = new Date("2023-10-16 0:0:00").getTime(); // 2015.7.2
+            var t = new Date().getTime() - start;
+            var h = ~~(t / 1000 / 60 / 60 % 24);
+            if (h < 10) {
+              h = "0" + h;
+            }
+            var m = ~~(t / 1000 / 60 % 60);
+            if (m < 10) {
+              m = "0" + m;
+            }
+            var s = ~~(t / 1000 % 60);
+            if (s < 10) {
+              s = "0" + s;
+            }
+            document.getElementById('d').innerHTML = ~~(t / 1000 / 60 / 60 / 24);
+            document.getElementById('h').innerHTML = h;
+            document.getElementById('m').innerHTML = m;
+            document.getElementById('s').innerHTML = s;
+          }
+          timer();
+          setInterval(timer, 1000);
+    </script>
+</body>
+
+</html>
